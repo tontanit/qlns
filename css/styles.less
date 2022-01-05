@@ -1,31 +1,63 @@
 .grid-container {
   display: grid;
   grid-template-columns: 200px 1fr;
+  grid-template-rows: 150px 1fr;
   grid-template-areas:
     "header header"
     "left main";
   grid-gap: 1px;
-  background-color: #2196f3;
   padding: 1px;
 
   .header {
     grid-area: header;
-    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid royalblue;
     text-align: center;
     font-size: 30px;
   }
 
-  .left {
+  .nav {
     grid-area: left;
-    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid royalblue;
     text-align: center;
-    font-size: 30px;
+
+    li {
+      font-size: 15px;
+      padding: 10px;
+      border-bottom: 1px solid royalblue;
+    }
   }
 
   .main {
     grid-area: main;
-    background-color: rgba(255, 255, 255, 0.8);
     text-align: center;
-    font-size: 30px;
+
+    .container {
+      width: 90%;
+      // border: 1px solid royalblue;
+      margin: auto;
+      padding-top: 10px;
+      .ds {
+        background-color: #4169e1;
+        border-radius: 5px;
+        padding: 20px;
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+      }
+    }
+
+    table {
+      font-size: 20px;
+      text-align: center;
+
+      th {
+        border: 2px solid #b0c4de;
+        padding: 5px;
+      }
+      td {
+        border: 2px solid #b0c4de;
+        padding: 8px;
+      }
+    }
   }
 }
