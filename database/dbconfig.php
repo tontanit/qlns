@@ -38,8 +38,17 @@ function ExcuteResult($sql, $sqlSingle = false)
             $data[] = $result;
         }
     }
-
     return $data;
     //Dong ket noi 
     mysqli_close($conn);
+}
+
+
+function getPost($key)
+{
+    $value = '';
+    if (isset($_POST[$key])) {
+        $value = $_POST[$key];
+    }
+    return $value;
 }

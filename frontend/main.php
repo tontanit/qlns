@@ -1,7 +1,8 @@
 <div class="main">
     <div class="container">
         <h4 class="ds">DANH SÁCH CÁN BỘ, CÔNG CHỨC THUỘC DIỆN BTV QUẢN LÝ</h4>
-        <table class="table">
+        <button type="button" class="btn btn-success"><a href="./nhansu/add.php">Thêm</a></button>
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th>STT</th>

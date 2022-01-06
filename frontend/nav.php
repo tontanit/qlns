@@ -1,17 +1,8 @@
-<div class="nav" >
-<!-- Noi dung nav -->
-
-<ul>
-    <li>Quan Ly Nhan su</li>
-    <li>Quan Ly Nhan su</li>
-    <li>Quan Ly Nhan su</li>
-    <li>Quan Ly Nhan su</li>
-    <li>Quan Ly Nhan su</li>
-    <li>Quan Ly Nhan su</li>
-</ul>
+<div class="nav">
+    <!-- Noi dung nav -->
 
 
 
 
-<!-- Noi dung nav -->
+    <!-- Noi dung nav -->
 </div>
