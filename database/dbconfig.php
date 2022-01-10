@@ -73,7 +73,10 @@ function searchResult($sql)
     //Thuc hien Query
     $qr = mysqli_query($conn, $sql);
 
-    $data = mysqli_fetch_array($qr, 1);
+    $data = [];
+    while ($result = mysqli_fetch_array($qr, 1)) {
+        $data[] = $result;
+    }
 
     return $data;
     //Dong ket noi 

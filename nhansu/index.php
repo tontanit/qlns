@@ -65,15 +65,11 @@ require_once('../database/dbconfig.php');
                     </thead>
                     <tbody>
                         <?php
-                        // if (isset($_GET['search'])) {
-
-                        //     $search = getGet('search');
-                        //     $sql = "SELECT * FROM nhansu
-                        //         WHERE hoten REGEXP '$search' 
-                        //         ORDER BY id DESC";
-                        //     $list = searchResult($sql);
-                        // } 
-                        $sql = "SELECT * FROM nhansu ORDER BY id DESC";
+                        $search = '';
+                        $search = getGet('search');
+                        $sql = "SELECT * FROM nhansu
+                                WHERE hoten REGEXP '$search' 
+                                ORDER BY id DESC";
                         $result = ExcuteResult($sql);
                         $index = 1;
                         foreach ($result as $list) {
