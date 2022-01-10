@@ -1,7 +1,7 @@
 <div class="main">
     <div class="container">
         <h4 class="ds">DANH SÁCH CÁN BỘ, CÔNG CHỨC THUỘC DIỆN BTV QUẢN LÝ</h4>
-        <button type="button" class="btn btn-success"><a href="./nhansu/add.php">Thêm</a></button>
+        <a href="./nhansu/add.php"><button type="button" class="btn btn-success">Thêm</button></a>
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -20,7 +20,7 @@
             </thead>
             <tbody>
                 <?php
-                $sql = "SELECT * FROM nhansu";
+                $sql = "SELECT * FROM nhansu ORDER BY id ASC";
                 $result = ExcuteResult($sql);
                 $index = 1;
                 foreach ($result as $list) {

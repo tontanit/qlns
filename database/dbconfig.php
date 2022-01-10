@@ -52,3 +52,30 @@ function getPost($key)
     }
     return $value;
 }
+
+function getGet($key)
+{
+    $value = '';
+    if (isset($_GET[$key])) {
+        $value = $_GET[$key];
+    }
+    return $value;
+}
+
+//Xay dung ham tim kiem
+function searchResult($sql)
+{
+
+    //Ket noi CSDL
+    $conn = mysqli_connect(host, username, password, database) or die('ket noi khong thanh cong');
+    mysqli_set_charset($conn, 'utf-8');
+
+    //Thuc hien Query
+    $qr = mysqli_query($conn, $sql);
+
+    $data = mysqli_fetch_array($qr, 1);
+
+    return $data;
+    //Dong ket noi 
+    mysqli_close($conn);
+}
