@@ -2,7 +2,7 @@
 define('host', 'localhost');
 define('username', 'root');
 define('password', '');
-define('database', 'qlns');
+define('database', 'quanly_cbcc');
 
 $conn = mysqli_connect(host, username, password, database) or die('ket noi khong thanh cong');
 
