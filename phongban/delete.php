@@ -7,10 +7,16 @@ if (!empty($_POST)) {
             case 'delete':
                 if (isset($_POST['id'])) {
                     $id = $_POST['id'];
-                    $sql = "DELETE FROM canbo WHERE id = '$id'";
+                    $sql = "DELETE FROM phongban WHERE id = '$id'";
                     Excute($sql);
                 }
                 break;
         }
     }
 }
+// if (isset($_POST['id'])) {
+//     $id = $_POST['id'];
+//     $sql = "DELETE FROM phongban WHERE id = '$id'";
+//     Excute($sql);
+//     echo 'Xóa thành công';
+// }

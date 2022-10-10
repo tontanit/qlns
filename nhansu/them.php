@@ -41,7 +41,7 @@ require_once('../frontend/header.php');
     <!-- //CHEN TABLE -->
 
     <h3 class="table-title">
-        SỬA THÔNG TIN CÁN BỘ, ĐẢNG VIÊN
+        THÊM CÁN BỘ, ĐẢNG VIÊN VÀO DANH SÁCH QUẢN LÝ
     </h3>
     <form action="" method="post">
         <table style="width: 50%;" class="table-second">
@@ -96,7 +96,7 @@ require_once('../frontend/header.php');
                     <td>
                         <select name="chucvu" id="">
                             <?php
-                            $sql = "SELECT * FROM chucvu";
+                            $sql = "SELECT * FROM chucvu order by chuc_vu ASC";
                             $kq = ExcuteResult($sql);
                             foreach ($kq as $list) {
                             ?>

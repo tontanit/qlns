@@ -111,6 +111,7 @@ require_once('../frontend/header.php');
                     </td>
                     <td>
                         <select name="chucvu" id="">
+
                             <?php
                             $sql = "SELECT * FROM chucvu";
                             $kq = ExcuteResult($sql);
@@ -124,6 +125,7 @@ require_once('../frontend/header.php');
                                         ?> value="<?= $list['id'] ?>"><?php echo $list['chuc_vu'] ?></Option>
                             <?php } ?>
                         </select>
+                        <a href="../chucvu/sua.php?btn_them=">+</a>
                     </td>
 
                     <td> <label>Phòng ban</label>
@@ -150,7 +152,7 @@ require_once('../frontend/header.php');
                     </td>
                 </tr>
                 <tr>
-                    <td colspan="4" style="text-align: center;"> <button class="btn btn-success" name="btn_sua" style="margin-bottom: 20px;">Sửa</button></td>
+                    <td colspan="4" style="text-align: center;"> <button class="btn btn-success" name="btn_sua" style="margin-bottom: 20px;" onclick="location.reload()">Sửa</button></td>
                 </tr>
             </tbody>
         </table>
