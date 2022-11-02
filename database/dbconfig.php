@@ -4,6 +4,7 @@ define('username', 'root');
 define('password', '');
 define('database', 'quanly_cbcc');
 
+// Tạo biến $conn để lưu mọi thông tin về kết nối này
 $conn = mysqli_connect(host, username, password, database) or die('ket noi khong thanh cong');
 
 function Excute($sql)

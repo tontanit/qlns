@@ -1,36 +1,38 @@
 <?php
-$title  = '';
-require_once('../database/dbconfig.php');
-require_once('../frontend/header.php');
-// require_once('../frontend/nav.php');
-
+include_once __DIR__ . '/../database/dbconfig.php';
 ?>
+<!DOCTYPE html>
+<html lang="en">
 
-<!-- Noi dung web -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="doc truyen tranh online, đọc truyện tranh online" />
+    <meta name="description" content="Web đọc truyện tranh online lớn nhất được cập nhật liên tục mỗi ngày - Cùng tham gia đọc truyện và thảo luận với hơn 10 triệu thành viên" />
+    <title>Quản Lý Nhân Sự</title>
+    <!-- Nhúng file quản lý CSS cho layout Frontend -->
+    <?php
+    include_once __DIR__ . '/../frontend/layouts/styles.php'
+    ?>
+    <style>
+        /* div {
+            border: 1px solid red;
+        } */
+    </style>
+</head>
 
-<div class="table-content">
+<body>
 
-    <h3 class="table-title">
-        DANH SÁCH QUẢN LÝ CB,ĐV
-    </h3>
+    <!-- Nhúng file header.php -->
+    <?php include_once __DIR__ . '/../frontend/layouts/partials/header.php' ?>
 
-    <!-- Form tìm kiếm -->
-    <div>
-        <table style="width:100%; margin-bottom: 5px;">
-            <td>
-                <form action="xuly_search.php" method="get">
-                    <input type="text" name="search" placeholder="Nhập từ khóa cần tìm" value="">
-                    <input type="submit" name="btn_search" value="Tìm">
-
-                </form>
-            </td>
-            <td style="text-align: right;"><a href="them.php"><button>Thêm</button></a></td>
-        </table>
-    </div>
-    <div>
-        <table class="table-customers">
+    <!-- Content -->
+    <div class="container-fluid">
+        <h3 class="text-center">DANH SÁCH QUẢN LÝ CÁN BỘ, ĐẢNG VIÊN</h3>
+        <a href="them.php"><button type="button" class="btn btn-primary">Thêm</button></a>
+        <table class="table table-bordered table-hover text-center">
             <thead>
-
                 <tr>
                     <th>STT</th>
                     <th>Họ và tên</th>
@@ -39,10 +41,10 @@ require_once('../frontend/header.php');
                     <th>Dân tộc</th>
                     <th>Quê quán</th>
                     <th>Ngày vào đảng</th>
-                    <th>học hàm</th>
-                    <th>chuyên môn</th>
+                    <th>Học hàm</th>
+                    <th>Chuyên môn</th>
                     <th>LLCT</th>
-                    <th>chức vụ</th>
+                    <th>Chức vụ</th>
                     <th>Đơn vị CT</th>
                     <th>Action</th>
                 </tr>
@@ -80,7 +82,7 @@ require_once('../frontend/header.php');
                                 FROM canbo	
                                 INNER JOIN chucvu ON canbo.id_cv = chucvu.id
                                 INNER JOIN phongban ON canbo.id_pb = phongban.id
-                                ORDER BY hoten ASC
+                                ORDER BY id DESC
                                 Limit $start, $limit ";
 
                     $result = ExcuteResult($sql);
@@ -111,59 +113,37 @@ require_once('../frontend/header.php');
                 </div>
             </tbody>
         </table>
-        <!-- sript xoa -->
-        <script type="text/javascript">
-            function deleteItem(id) {
-                var option = confirm('Ban có chắc muốn xóa danh mục này không?');
-                if (!option) {
-                    return;
-                }
-                console.log(id)
-                // ajax - lenh post
-                $.post('delete.php', {
-                    'id': id,
-                    'action': 'delete'
-                }, function(data) {
-                    location.reload()
-                })
-            }
-        </script>
-        <script type="text/javascript">
-            function deleteItem(id) {
-                Option = confirm('Bạn có muốn xóa đối tượng này không')
-                console.log(id)
-                $.post('delete.php', {
-                    'id': id
-                }, function(data) {
-                    alert(data)
-                    location.reload()
-                })
-            }
-        </script>
     </div>
+    <div>
+        <nav aria-label=" Page navigation example">
+            <ul class="pagination justify-content-center">
+                <?php
+                // BƯỚC 5: HIỂN THỊ PHÂN TRANG
+                // nếu current_page > 1 và total_page > 1 mới hiển thị nút prev
+                if ($current_page > 1 && $total_page > 1) {
+                    echo '
+                <li class="page-item">
+                <a class="page-link" href="index.php?page=' . ($current_page - 1) . '">Prev</a>
+                </li>';
+                }
+                // Lặp khoảng giữa
+                for ($i = 1; $i <= $total_page; $i++) {
+                    // Nếu là trang hiện tại thì hiển thị thẻ span
+                    // ngược lại hiển thị thẻ a
+                    if ($i == $current_page) {
+                        echo '<li class="page-item active"><a class="page-link" >' . $i . '<span class="sr-only">(current)</span></a> </li>';
+                    } else {
+                        echo '<li class="page-item"><a class="page-link" href="index.php?page=' . $i . '">' . $i . '</a></li>  ';
+                    }
+                }
+                // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
+                if ($current_page < $total_page && $total_page > 1) {
+                    echo '<li class="page-item"><a class="page-link" href="index.php?page=' . ($current_page + 1) . '">Next</a> </li> ';
+                }
+                ?>
+            </ul>
+        </nav>
 
-    <div class="pagination">
-        <?php
-        // BƯỚC 5: HIỂN THỊ PHÂN TRANG
-        // nếu current_page > 1 và total_page > 1 mới hiển thị nút prev
-        if ($current_page > 1 && $total_page > 1) {
-            echo '<a href="index.php?page=' . ($current_page - 1) . '">Prev</a>';
-        }
-        // Lặp khoảng giữa
-        for ($i = 1; $i <= $total_page; $i++) {
-            // Nếu là trang hiện tại thì hiển thị thẻ span
-            // ngược lại hiển thị thẻ a
-            if ($i == $current_page) {
-                echo '<a style="background-color: #56aaff;">' . $i . '</a> ';
-            } else {
-                echo '<a href="index.php?page=' . $i . '">' . $i . '</a>  ';
-            }
-        }
-        // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
-        if ($current_page < $total_page && $total_page > 1) {
-            echo '<a href="index.php?page=' . ($current_page + 1) . '">Next</a>  ';
-        }
-        ?>
     </div>
     <div>
         <!-- Hiện tổng số Record hiện có -->
@@ -171,9 +151,36 @@ require_once('../frontend/header.php');
         echo 'Tổng số: ' . $total_records;
         ?>
     </div>
-</div>
 
-<!-- End Noi dung web -->
-<?php
-require_once('../frontend/footer.php');
-?>
+
+    <!-- End Content -->
+
+    <!-- Nhúng nội dung file footer.php -->
+    <?php include_once __DIR__ . '/../frontend/layouts/partials/footer.php' ?>
+
+
+    <!-- Nhúng file quản lý JS cho layout Frontend -->
+    <?php
+    include_once __DIR__ . '/../frontend/layouts/scripts.php'
+    ?>
+    <!-- File Javascript sử dụng riêng cho trang này -->
+    <!-- script xoa -->
+    <script type="text/javascript">
+        function deleteItem(id) {
+            var option = confirm('Ban có chắc muốn xóa không?');
+            if (!option) {
+                return;
+            }
+            console.log(id)
+            // ajax - lenh post
+            $.post('xoa.php', {
+                'id': id,
+                'action': 'delete'
+            }, function(data) {
+                location.reload();
+            })
+        }
+    </script>
+</body>
+
+</html>
