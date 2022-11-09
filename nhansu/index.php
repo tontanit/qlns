@@ -15,11 +15,7 @@ include_once __DIR__ . '/../database/dbconfig.php';
     <?php
     include_once __DIR__ . '/../frontend/layouts/styles.php'
     ?>
-    <style>
-        /* div {
-            border: 1px solid red;
-        } */
-    </style>
+
 </head>
 
 <body>

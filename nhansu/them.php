@@ -28,7 +28,7 @@ include_once __DIR__ . '/../database/dbconfig.php';
 
 
     <!-- Content -->
-    <div class="container border">
+    <div class="container p-5 my-3 border">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h2 class="text-center">DANH SÁCH QUẢN LÝ CÁN BỘ, ĐẢNG VIÊN</h2>

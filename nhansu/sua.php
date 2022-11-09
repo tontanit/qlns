@@ -42,7 +42,7 @@ include_once __DIR__ . '/../database/dbconfig.php';
 
                         //1. Hien danh sach vao Input
                         $sql = "SELECT canbo.id, hoten,ngaysinh,gioitinh, dantoc,quequan,
-         ngayvaodang, hoc_ham,chuyenmon,llct, chucvu.id as id_chucvu, chuc_vu, phongban.id as id_phongban, phong_ban, ghichu
+                         ngayvaodang, hoc_ham,chuyenmon,llct, chucvu.id as id_chucvu, chuc_vu, phongban.id as id_phongban, phong_ban, ghichu
                 FROM canbo	
                 INNER JOIN chucvu ON canbo.id_cv = chucvu.id
                 INNER JOIN phongban ON canbo.id_pb = phongban.id
@@ -183,11 +183,11 @@ include_once __DIR__ . '/../database/dbconfig.php';
                             <div class="row form-group">
                                 <div class="col">
                                     <label>Ghi chú</label>
-                                    <textarea name="ghichu" class="form-control" value="<?= $result['ghichu'] ?>" class="ghichu"></textarea>
+                                    <textarea name="ghichu" class="form-control" value=""><?= $result['ghichu'] ?></textarea>
                                 </div>
                             </div>
 
-                            <button class="btn btn-success" name="btn_sua" class="form-control" onclick="location.reload()">Sửa</button>
+                            <button class="btn btn-success" name="btn_sua" class="form-control">Sửa</button>
 
                     </div>
 
